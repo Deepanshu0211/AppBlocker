@@ -32,11 +32,11 @@ App Blocker is a simple Python application built using Tkinter that allows users
 5. Clear the list to remove all blocked applications.
 6. Enjoy the GIF animation while using the application.
 
+
+
 ## Screenshots
 
-(You can add screenshots of the application's interface here if desired.)
-
-
+![Screenshot 1](screenshot/ss.jpg)
 
 
 ## Acknowledgments
