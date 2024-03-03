@@ -56,9 +56,8 @@ class AppBlockerApp:
         clear_button = Button(button_frame, text="Clear List", command=self.clear_list, font=("Helvetica", 12), bg="#F39C12", fg="#ffffff", padx=10)
         clear_button.grid(row=0, column=4, padx=5)
 
-        # Load and display the gif
         self.gif_frames = []
-        gif_url = "https://media1.tenor.com/m/2Rb1vsrgV0IAAAAC/padh-le-padhai.gif"  # Example GIF URL
+        gif_url = "https://media1.tenor.com/m/2Rb1vsrgV0IAAAAC/padh-le-padhai.gif"
         self.load_gif_frames(gif_url)
         self.current_frame_index = 0
         self.gif_label = Label(self.root, bg="#f0f0f0")
@@ -105,13 +104,10 @@ class AppBlockerApp:
     def block_apps(self, app_path, replacement_app):
         while self.is_blocking:
             if self.is_process_running(os.path.basename(app_path)):
-                # Kill the blocked app process
                 for process in psutil.process_iter():
                     if process.name() == os.path.basename(app_path):
                         process.kill()
-                # Open the replacement app
                 os.startfile(replacement_app)
-            # Delay between checks to prevent high CPU usage
             time.sleep(1)
     
     def is_process_running(self, process_name):
@@ -133,9 +129,9 @@ class AppBlockerApp:
             try:
                 while True:
                     self.gif_frames.append(ImageTk.PhotoImage(gif.copy()))
-                    gif.seek(len(self.gif_frames))  # Move to next frame
+                    gif.seek(len(self.gif_frames))
             except EOFError:
-                pass  # End of gif
+                pass
         else:
             print("Failed to download GIF from URL")
 
@@ -151,7 +147,4 @@ class AppBlockerApp:
 if __name__ == "__main__":
     root = Tk()
     app = AppBlockerApp(root)
-   
-    
-
     root.mainloop()
